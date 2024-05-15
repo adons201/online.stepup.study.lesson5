@@ -2,6 +2,7 @@ package ru.stepup.online.repo;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.stepup.online.entity.AccountPool;
 
@@ -13,5 +14,7 @@ public interface AccountPoolRepository extends CrudRepository<AccountPool, Integ
             "and ap.mdm_code = :mdmCode \n" +
             "and ap.priority_code = :priorityCode \n" +
             "and ap.registry_type_code = :registryTypeCode", nativeQuery = true)
-    Integer findFirst(String branchCode, String currencyCode, String mdmCode, String priorityCode, String registryTypeCode);
+    Integer findFirst(@Param("branchCode") String branchCode, @Param("currencyCode") String currencyCode,
+                      @Param("mdmCode")String mdmCode, @Param("priorityCode")String priorityCode,
+                      @Param("registryTypeCode")String registryTypeCode);
 }

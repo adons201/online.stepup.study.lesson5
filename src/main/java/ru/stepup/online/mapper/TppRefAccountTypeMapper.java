@@ -8,8 +8,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface TppRefAccountTypeMapper {
-    TppRefAccountTypeModel tppRefAccountTypeToTppRefAccountTypeModel(TppRefAccountType tppRefAccountType);
-    TppRefAccountType tppRefAccountTypeModelToTppRefAccountType(TppRefAccountTypeModel tppRefAccountTypeModel);
-
-    List<TppRefAccountTypeModel> tppRefAccountTypeToTppRefAccountTypeModel(List<TppRefAccountType> tppRefAccountType);
+    TppRefAccountTypeModel toModel(TppRefAccountType tppRefAccountType);
+    TppRefAccountType toEntity(TppRefAccountTypeModel tppRefAccountTypeModel);
+    List<TppRefAccountTypeModel> toModel(List<TppRefAccountType> tppRefAccountType);
 }

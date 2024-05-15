@@ -3,7 +3,6 @@ package ru.stepup.online.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -29,7 +28,7 @@ public class Agreement {
     private String arrangementType;
 
     @Column(name = "sheduler_job_id")
-    private Long shedulerJobId;
+    private Integer shedulerJobId;
 
     @Column(name = "number", length = 50)
     private String number;
@@ -47,7 +46,7 @@ public class Agreement {
     private Date cancelDate;
 
     @Column(name = "validity_duration")
-    private Long validityDuration;
+    private Integer validityDuration;
 
     @Column(name = "cancellation_reason", length = 100)
     private String cancellationReason;
@@ -60,29 +59,29 @@ public class Agreement {
     private Date interestCalculationDate;
 
     @Column(name = "interest_rate")
-    private BigDecimal interestRate;
+    private Float interestRate;
 
     @Column(name = "coefficient")
-    private BigDecimal coefficient;
+    private Float coefficient;
 
     @Column(name = "coefficient_action", length = 50)
     private String coefficientAction;
 
     @Column(name = "minimum_interest_rate")
-    private BigDecimal minimumInterestRate;
+    private Float minimumInterestRate;
 
     @Column(name = "minimum_interest_rate_coefficient")
-    private BigDecimal minimumInterestRateCoefficient;
+    private Float minimumInterestRateCoefficient;
 
     @Column(name = "minimum_interest_rate_coefficient_action", length = 50)
     private String minimumInterestRateCoefficientAction;
 
-    @Column(name = "maximum_interest_rate")
-    private BigDecimal maximumInterestRate;
+    @Column(name = "maximal_interest_rate")
+    private Float maximalInterestRate;
 
-    @Column(name = "maximum_interest_rate_coefficient")
-    private BigDecimal maximumInterestRateCoefficient;
+    @Column(name = "maximal_interest_rate_coefficient")
+    private Float maximalInterestRateCoefficient;
 
-    @Column(name = "maximum_interest_rate_coefficient_action", length = 50)
-    private String maximumInterestRateCoefficientAction;
+    @Column(name = "maximal_interest_rate_coefficient_action", length = 50)
+    private String maximalInterestRateCoefficientAction;
 }

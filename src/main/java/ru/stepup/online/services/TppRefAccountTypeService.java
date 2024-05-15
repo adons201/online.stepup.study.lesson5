@@ -18,7 +18,7 @@ public class TppRefAccountTypeService {
     }
 
     public TppRefAccountTypeModel findByValue(String value) {
-        return tppRefAccountTypeMapper.tppRefAccountTypeToTppRefAccountTypeModel(tppRefAccountTypeRepository.findByValue(value));
+        return tppRefAccountTypeMapper.toModel(tppRefAccountTypeRepository.findByValue(value));
     }
 
 }

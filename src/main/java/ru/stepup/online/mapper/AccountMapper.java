@@ -6,6 +6,6 @@ import ru.stepup.online.model.AccountModel;
 
 @Mapper(componentModel = "spring")
 public interface AccountMapper {
-    AccountModel accountToAccountModel(Account account);
-    Account accountModelToAccount(AccountModel accountModel);
+    AccountModel toModel(Account account);
+    Account toEntity(AccountModel accountModel);
 }

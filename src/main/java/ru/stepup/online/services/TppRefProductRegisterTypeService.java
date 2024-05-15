@@ -2,8 +2,6 @@ package ru.stepup.online.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.stepup.online.entity.TppRefProductRegisterType;
-import ru.stepup.online.mapper.TppRefProductClassMapper;
 import ru.stepup.online.mapper.TppRefProductRegisterTypeMapper;
 import ru.stepup.online.model.TppRefProductRegisterTypeModel;
 import ru.stepup.online.repo.TppRefProductRegisterTypeRepository;
@@ -27,7 +25,7 @@ public class TppRefProductRegisterTypeService {
     }
 
     public List<TppRefProductRegisterTypeModel> findTppRefProductRegisterType(String productClassCode, String accountType) {
-        return tppRefProductRegisterTypeMapper.tppRefProductRegisterTypeToTppRefProductRegisterTypeModel(
+        return tppRefProductRegisterTypeMapper.toModel(
                 tppRefProductRegisterTypeRepository.findTppRefProductRegisterType(productClassCode,accountType));
     }
 

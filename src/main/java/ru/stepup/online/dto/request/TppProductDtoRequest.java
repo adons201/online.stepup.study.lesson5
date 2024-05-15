@@ -1,16 +1,21 @@
 package ru.stepup.online.dto.request;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class TppProductDtoRequest {
     private Integer instanceId;
     @NotNull(message = "Имя обязательного параметра productType не заполнено.")
@@ -37,11 +42,14 @@ public class TppProductDtoRequest {
     @NotNull(message = "Имя обязательного параметра contractId не заполнено.")
     private Integer contractId;
     @NotNull(message = "Имя обязательного параметра branchCode не заполнено.")
+    @JsonProperty("BranchCode")
     private String branchCode;
     @NotNull(message = "Имя обязательного параметра IsoCurrencyCode не заполнено.")
-    private String IsoCurrencyCode;
+    @JsonProperty("IsoCurrencyCode")
+    private String isoCurrencyCode;
     @NotNull(message = "Имя обязательного параметра urgencyCode не заполнено.")
     private String urgencyCode;
+    @JsonProperty("ReferenceCode")
     private Integer referenceCode;
     private Object additionalPropertiesVip;
     private List<AgreementDtoRequest> instanceAgreement;

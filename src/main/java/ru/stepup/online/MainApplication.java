@@ -20,16 +20,9 @@ import java.util.Locale;
 public class MainApplication {
 
     public static void main(String[] args) {
-        Locale.setDefault(new Locale("ru"));
         SpringApplication.run(MainApplication.class, args);
     }
-    @Bean
-    public ObjectMapper objectMapper() {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        return mapper;
-    }
+
 
 }
 

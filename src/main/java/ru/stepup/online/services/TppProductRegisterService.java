@@ -5,7 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import ru.stepup.online.dto.request.TppProductRegisterDtoRequest;
-import ru.stepup.online.dto.response.TppProductRegisterDtoResponse;
+import ru.stepup.online.dto.response.TppProductRegisterDtoResponse1;
+import ru.stepup.online.dto.response.TppProductRegisterDtoResponse2;
 import ru.stepup.online.entity.TppProductRegister;
 import ru.stepup.online.mapper.TppProductRegisterMapper;
 import ru.stepup.online.model.AccountModel;
@@ -13,6 +14,8 @@ import ru.stepup.online.model.TppProductRegisterModel;
 import ru.stepup.online.model.enumeration.ProductState;
 import ru.stepup.online.repo.TppProductRegisterRepository;
 import ru.stepup.online.services.errors.ErrorParams;
+
+import java.util.List;
 
 @Service
 public class TppProductRegisterService {
@@ -31,19 +34,19 @@ public class TppProductRegisterService {
     }
 
     @Transactional
-    public TppProductRegisterDtoResponse insertTppProductRegister(TppProductRegisterDtoRequest tppProductRegisterDto) {
+    public TppProductRegisterDtoResponse1 insertTppProductRegister(TppProductRegisterDtoRequest tppProductRegisterDto) {
         AccountModel accountModel = accountService.findFirstByAccountPoolId(accountPoolService.findFirstAccountPullId(tppProductRegisterDto).stream().findFirst().get());
 
-        TppProductRegister tppProductRegister =
-                tppProductRegisterMapper.tppProductRegisterModelToTppProductRegister(TppProductRegisterModel.builder()
+        TppProductRegister tppProductRegister = tppProductRegisterRepository.save(
+                tppProductRegisterMapper.toEntity(TppProductRegisterModel.builder()
                         .productId(tppProductRegisterDto.getInstanceId())
                         .type(tppProductRegisterDto.getRegistryTypeCode())
                         .account(accountModel.getId())
                         .currencyCode(tppProductRegisterDto.getCurrencyCode())
                         .state(ProductState.OPEN.getDisc())
                         .accountNumber(accountModel.getAccountNumber())
-                        .build());
-        return tppProductRegisterMapper.tppProductRegisterToTppProductRegisterDtoResponse(tppProductRegister);
+                        .build()));
+        return tppProductRegisterMapper.toDtoRs1(tppProductRegister);
     }
 
     public ErrorParams checkValidCreateTppProductRegisterDto(TppProductRegisterDtoRequest tppProductRegisterDto) {
@@ -54,10 +57,13 @@ public class TppProductRegisterService {
         return new ErrorParams("", HttpStatus.OK);
     }
 
-
     public boolean checkExistsTppProduct(Integer id, String type){
-        if (tppProductRegisterRepository.countProduct(id, type) > 0) return true;
-        return false;
+        return tppProductRegisterRepository.countProduct(id, type) > 0;
+    }
+
+    public List<TppProductRegisterDtoResponse2> findProductRegisters(Integer id){
+        List<TppProductRegister> allByProductId = tppProductRegisterRepository.findAllByProductId(id);
+        return tppProductRegisterMapper.toDtoRs2(allByProductId);
     }
 
 

@@ -7,6 +7,6 @@ import ru.stepup.online.entity.TppRefProductClass;
 
 @Repository
 public interface TppRefProductClassRepository extends CrudRepository<TppRefProductClass, Integer> {
-    @Query(value ="select * from tpp_ref_product_class ap where value = :productCode", nativeQuery = true)
+    @Query(value ="select * from tpp_ref_product_class ap where value = :productCode  limit 1", nativeQuery = true)
     TppRefProductClass findFirst(String productCode);
 }

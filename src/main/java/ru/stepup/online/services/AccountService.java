@@ -23,7 +23,7 @@ public class AccountService {
     }
 
     public AccountModel findFirstByAccountPoolId(AccountPool accountPoolId) {
-        return accountMapper.accountToAccountModel(findFirstAccByAccountPoolId(accountPoolId));
+        return accountMapper.toModel(findFirstAccByAccountPoolId(accountPoolId));
     }
 
 }

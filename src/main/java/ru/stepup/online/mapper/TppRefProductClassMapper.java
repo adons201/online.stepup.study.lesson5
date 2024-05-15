@@ -6,6 +6,6 @@ import ru.stepup.online.model.TppRefProductClassModel;
 
 @Mapper(componentModel = "spring")
 public interface TppRefProductClassMapper {
-    TppRefProductClassModel tppRefProductClassToTppRefProductClassModel(TppRefProductClass tppRefProductClass);
-    TppRefProductClass tppRefProductClassModelToTppRefProductClass(TppRefProductClassModel tppRefProductClassModel);
+    TppRefProductClassModel toModel(TppRefProductClass tppRefProductClass);
+    TppRefProductClass toEntity(TppRefProductClassModel tppRefProductClassModel);
 }

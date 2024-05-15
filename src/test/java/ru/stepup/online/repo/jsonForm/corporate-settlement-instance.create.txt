@@ -1,0 +1,83 @@
+{
+  "instanceId": null,
+  "productType": "03.012.002_47533_ComSoLd",
+  "productCode": "03.012.002",
+  "registerType": "1",
+  "mdmCode":"15",
+  "contractNumber":"Number1",
+  "contractDate":"2020-12-10",
+  "priority":"0",
+  "interestRatePenalty":null,
+  "minimalBalance":null,
+  "thresholdAmount":null,
+  "accountingDetails":null,
+  "rateType":null,
+  "taxPercentageRate":null,
+  "technicalOverdraftLimitAmount":null,
+  "contractId":1,
+  "BranchCode":"0022",
+  "IsoCurrencyCode":"800",
+  "urgencyCode":"00",
+  "ReferenceCode":null,
+  "additionalPropertiesVip":{
+    "data": [
+      {
+        "key": " RailwayRegionOwn",
+        "value": "ABC",
+        "name": "Регион принадлежности железной дороги"
+      },
+      {
+        "key": "counter",
+        "value": "123",
+        "name": "Счетчик"
+      }]
+  },
+  "instanceAgreement": [
+    {
+      "GeneralAgreementId" :null,
+      "SupplementaryAgreementId" :null,
+      "arrangementType" :null,
+      "shedulerJobId" :null,
+      "Number" :"A1",
+      "openingDate" :"2020-12-10",
+      "closingDate" :null,
+      "CancelDate" :null,
+      "validityDuration" :null,
+      "cancellationReason" :null,
+      "Status" :null,
+      "interestCalculationDate" :null,
+      "interestRate" :null,
+      "coefficient" :null,
+      "coefficientAction" :null,
+      "minimumInterestRate" :null,
+      "minimumInterestRateCoefficient" :null,
+      "minimumInterestRateCoefficientAction" :null,
+      "maximalnterestRate"  :null,
+      "maximalnterestRateCoefficient" :null,
+      "maximalnterestRateCoefficientAction" :null
+    },
+    {
+      "GeneralAgreementId" :null,
+      "SupplementaryAgreementId" :null,
+      "arrangementType" :null,
+      "shedulerJobId" :null,
+      "Number" :"A2",
+      "openingDate" :"2020-12-10",
+      "closingDate" :null,
+      "CancelDate" :null,
+      "validityDuration" :null,
+      "cancellationReason" :null,
+      "Status" :null,
+      "interestCalculationDate" :null,
+      "interestRate" :null,
+      "coefficient" :null,
+      "coefficientAction" :null,
+      "minimumInterestRate" :null,
+      "minimumInterestRateCoefficient" :null,
+      "minimumInterestRateCoefficientAction" :null,
+      "maximalnterestRate"  :null,
+      "maximalnterestRateCoefficient" :null,
+      "maximalnterestRateCoefficientAction" :null
+    }
+  ]
+}

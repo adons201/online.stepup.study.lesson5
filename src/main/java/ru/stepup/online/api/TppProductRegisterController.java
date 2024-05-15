@@ -11,8 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.stepup.online.dto.response.DataResponse;
 import ru.stepup.online.dto.request.TppProductRegisterDtoRequest;
-import ru.stepup.online.dto.response.TppProductRegisterDtoResponse;
-import ru.stepup.online.model.TppProductRegisterModel;
+import ru.stepup.online.dto.response.TppProductRegisterDtoResponse1;
 import ru.stepup.online.services.TppProductRegisterService;
 import ru.stepup.online.services.errors.ErrorParams;
 
@@ -39,7 +38,7 @@ public class TppProductRegisterController {
             return ResponseEntity.status(errorParams.getHttpStatus()).body(errorParams.getParam());
         }
         else {
-            TppProductRegisterDtoResponse tppProductRegister = tppProductRegisterService.insertTppProductRegister(tppProductRegisterDto);
+            TppProductRegisterDtoResponse1 tppProductRegister = tppProductRegisterService.insertTppProductRegister(tppProductRegisterDto);
             return ResponseEntity.ok(new DataResponse(tppProductRegister));
         }
     }

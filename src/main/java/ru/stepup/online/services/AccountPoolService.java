@@ -16,11 +16,12 @@ public class AccountPoolService {
     }
 
     public Optional<AccountPool> findFirstAccountPullId(TppProductRegisterDtoRequest tppProductRegisterDto) {
-        return accountPoolRepository.findById(accountPoolRepository.findFirst(tppProductRegisterDto.getBranchCode(),
+        Integer first = accountPoolRepository.findFirst(tppProductRegisterDto.getBranchCode(),
                 tppProductRegisterDto.getCurrencyCode(),
                 tppProductRegisterDto.getMdmCode(),
                 tppProductRegisterDto.getPriorityCode(),
-                tppProductRegisterDto.getRegistryTypeCode()));
+                tppProductRegisterDto.getRegistryTypeCode());
+        return accountPoolRepository.findById(first);
     }
 
 

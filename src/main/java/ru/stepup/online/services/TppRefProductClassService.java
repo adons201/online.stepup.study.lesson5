@@ -17,7 +17,7 @@ public class TppRefProductClassService {
     }
 
     public TppRefProductClassModel findFirst(String productCode){
-        return tppRefProductClassMapper.tppRefProductClassToTppRefProductClassModel(tppRefProductClassRepository.findFirst(productCode));
+        return tppRefProductClassMapper.toModel(tppRefProductClassRepository.findFirst(productCode));
     }
 
 }

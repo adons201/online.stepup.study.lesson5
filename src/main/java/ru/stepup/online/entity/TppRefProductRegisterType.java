@@ -24,9 +24,6 @@ public class TppRefProductRegisterType {
     @JoinColumn(name = "product_class_code", referencedColumnName = "value", nullable = false)
     private TppRefProductClass productClassCode;
 
-//    @Column(name = "product_class_code", length = 100)
-//    private String productClassCode;
-
     @Column(name = "register_type_start_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registerTypeStartDate;
@@ -36,9 +33,6 @@ public class TppRefProductRegisterType {
     private Date registerTypeEndDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(table = "tpp_ref_account_type", name = "account_type",referencedColumnName = "value")
+    @JoinColumn(name = "account_type",referencedColumnName = "value")
     private TppRefAccountType accountType;
-
-//    @Column(name = "account_type", length = 100)
-//    private String accountType;
 }

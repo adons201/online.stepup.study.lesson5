@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface TppRefProductRegisterTypeMapper {
-    TppRefProductRegisterTypeModel tppRefProductRegisterTypeToTppRefProductRegisterTypeModel(TppRefProductRegisterType tppRefProductRegisterType);
-    TppRefProductRegisterType tppRefProductRegisterTypeModelToTppRefProductRegisterType(TppRefProductRegisterTypeModel tppRefProductRegisterTypeModel);
-    List<TppRefProductRegisterTypeModel> tppRefProductRegisterTypeToTppRefProductRegisterTypeModel(List<TppRefProductRegisterType> tppRefProductRegisterType);
+    TppRefProductRegisterTypeModel toModel(TppRefProductRegisterType tppRefProductRegisterType);
+    TppRefProductRegisterType toEntity(TppRefProductRegisterTypeModel tppRefProductRegisterTypeModel);
+    List<TppRefProductRegisterTypeModel> toModel(List<TppRefProductRegisterType> tppRefProductRegisterType);
 }
