@@ -4,7 +4,7 @@
   "productCode": "03.012.002",
   "registerType": "1",
   "mdmCode":"15",
-  "contractNumber":"Number1",
+  "contractNumber":"Number2",
   "contractDate":"2020-12-10",
   "priority":"0",
   "interestRatePenalty":null,
@@ -35,7 +35,7 @@
   "instanceAgreement": [
     {
       "GeneralAgreementId" :null,
-      "SupplementaryAgreementId" :null,
+      "SupplementaryAgreementId" :"2",
       "arrangementType" :null,
       "shedulerJobId" :null,
       "Number" :"A1",
@@ -58,7 +58,7 @@
     },
     {
       "GeneralAgreementId" :null,
-      "SupplementaryAgreementId" :null,
+      "SupplementaryAgreementId" :"1",
       "arrangementType" :null,
       "shedulerJobId" :null,
       "Number" :"A2",

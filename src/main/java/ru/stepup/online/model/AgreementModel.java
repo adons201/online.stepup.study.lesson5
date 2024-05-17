@@ -2,6 +2,7 @@ package ru.stepup.online.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.stepup.online.entity.TppProduct;
 
 import java.math.BigDecimal;

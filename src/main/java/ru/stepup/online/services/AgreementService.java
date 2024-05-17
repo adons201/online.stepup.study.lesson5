@@ -34,10 +34,10 @@ public class AgreementService {
     }
 
 
-    public List<String> findAllByNumber(List<AgreementDtoRequest> agreementDtoRequests) {
+    public List<Agreement> findAllByNumber(List<AgreementDtoRequest> agreementDtoRequests) {
         List<String> numbers = agreementDtoRequests.stream().map(AgreementDtoRequest::getNumber).toList();
-        List<String> agreements = new ArrayList<>();
-        for (String s: numbers) agreements.addAll(agreementRepository.findAllByNumber(s).stream().map(Agreement::getNumber).toList());
+        List<Agreement> agreements = new ArrayList<>();
+        for (String s: numbers) agreements.addAll(agreementRepository.findAllByNumber(s));
         return new ArrayList<>(agreements);
     }
 
@@ -50,40 +50,41 @@ public class AgreementService {
         List<AgreementDtoRequest> agreementDtoRequestList = tppProductDtoRequests.getInstanceAgreement();
         List<AgreementModel> agreementModels = new ArrayList<>();
         for (AgreementDtoRequest a : agreementDtoRequestList) {
-            agreementModels.add(agreementMapper.toModel(agreementRepository.save(agreementMapper.toEntity(AgreementModel.builder()
-                            .productId(tppProductMapper.toEntity(productId))
-                            .generalAgreementId(a.getGeneralAgreementId())
-                            .supplementaryAgreementId(a.getSupplementaryAgreementId())
-                            .arrangementType(a.getArrangementType())
-                            .shedulerJobId(a.getShedulerJobId())
-                            .number(a.getNumber())
-                            .openingDate(a.getOpeningDate())
-                            .closingDate(a.getClosingDate())
-                            .cancelDate(a.getCancelDate())
-                            .validityDuration(a.getValidityDuration())
-                            .cancellationReason(a.getCancellationReason())
-                            .status(a.getStatus())
-                            .interestCalculationDate(a.getInterestCalculationDate())
-                            .interestRate(a.getInterestRate())
-                            .coefficient(a.getCoefficient())
-                            .coefficientAction(a.getCoefficientAction())
-                            .minimumInterestRate(a.getMinimumInterestRate())
-                            .minimumInterestRateCoefficientAction(a.getMinimumInterestRateCoefficientAction())
-                            .maximumInterestRate(a.getMaximalnterestRate())
-                            .maximumInterestRateCoefficient(a.getMaximalnterestRateCoefficient())
-                            .maximumInterestRateCoefficientAction(a.getMinimumInterestRateCoefficientAction()).build()))));
+            AgreementModel agreementModel = AgreementModel.builder()
+                    .productId(tppProductMapper.toEntity(productId))
+                    .generalAgreementId(a.getGeneralAgreementId())
+                    .supplementaryAgreementId(a.getSupplementaryAgreementId())
+                    .arrangementType(a.getArrangementType())
+                    .shedulerJobId(a.getShedulerJobId())
+                    .number(a.getNumber())
+                    .openingDate(a.getOpeningDate())
+                    .closingDate(a.getClosingDate())
+                    .cancelDate(a.getCancelDate())
+                    .validityDuration(a.getValidityDuration())
+                    .cancellationReason(a.getCancellationReason())
+                    .status(a.getStatus())
+                    .interestCalculationDate(a.getInterestCalculationDate())
+                    .interestRate(a.getInterestRate())
+                    .coefficient(a.getCoefficient())
+                    .coefficientAction(a.getCoefficientAction())
+                    .minimumInterestRate(a.getMinimumInterestRate())
+                    .minimumInterestRateCoefficientAction(a.getMinimumInterestRateCoefficientAction())
+                    .maximumInterestRate(a.getMaximalnterestRate())
+                    .maximumInterestRateCoefficient(a.getMaximalnterestRateCoefficient())
+                    .maximumInterestRateCoefficientAction(a.getMaximalnterestRateCoefficientAction()).build();
+            agreementModels.add(agreementMapper.toModel(agreementRepository.save(agreementMapper.toEntity(agreementModel))));
         }
         return new ArrayList<>(agreementModels);
     }
 
     public List<String> checkDuplicateAgreement(TppProductDtoRequest tppProductDto) {
         List<AgreementDtoRequest> agreementDtoRequestList = tppProductDto.getInstanceAgreement();
-        List<String> listNumbers = findAllByNumber(agreementDtoRequestList);
+        List<Agreement> listNumbers = findAllByNumber(agreementDtoRequestList);
         List<String> errorParams = new ArrayList<>();
         if (listNumbers.size() > 0) {
             errorParams = listNumbers.stream()
-                    .map(x -> "Параметр № Дополнительного соглашения (сделки) Number " + x + " уже существует для ЭП с ИД  "
-                            + tppProductDto.getInstanceId()).toList();
+                    .map(x -> "Параметр № Дополнительного соглашения (сделки) Number " + x.getNumber() + " уже существует для ЭП с ИД  "
+                            + x.getProductId().getId()).toList();
         }
         return new ArrayList<>(errorParams);
     }

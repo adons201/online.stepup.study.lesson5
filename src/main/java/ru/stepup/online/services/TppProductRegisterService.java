@@ -51,7 +51,7 @@ public class TppProductRegisterService {
 
     public ErrorParams checkValidCreateTppProductRegisterDto(TppProductRegisterDtoRequest tppProductRegisterDto) {
         if (checkExistsTppProduct(tppProductRegisterDto.getInstanceId(), tppProductRegisterDto.getRegistryTypeCode()))
-            return new ErrorParams("Параметр registryTypeCode тип регистра" + tppProductRegisterDto.getRegistryTypeCode() + " уже существует для ЭП с ИД " + tppProductRegisterDto.getInstanceId(), HttpStatus.BAD_REQUEST);
+            return new ErrorParams("Параметр registryTypeCode тип регистра " + tppProductRegisterDto.getRegistryTypeCode() + " уже существует для ЭП с ИД " + tppProductRegisterDto.getInstanceId(), HttpStatus.BAD_REQUEST);
         if (!tppRefProductRegisterTypeService.checkExistsTppRefProductRegisterType(tppProductRegisterDto.getRegistryTypeCode()))
             return new ErrorParams("Код Продукта " + tppProductRegisterDto.getRegistryTypeCode() + " не найдено в Каталоге продуктов tpp_ref_product_register_type для данного типа Регистра", HttpStatus.NOT_FOUND);
         return new ErrorParams("", HttpStatus.OK);
